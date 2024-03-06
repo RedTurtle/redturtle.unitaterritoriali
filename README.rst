@@ -31,19 +31,28 @@
 redturtle.unitaterritoriali
 ===========================
 
-An add-on for Plone
+This addon takes data from ISTAT:
+- https://www.istat.it/it/archivio/6789
+- https://www.istat.it/storage/codici-unita-amministrative/Elenco-codici-statistici-e-denominazioni-delle-unita-territoriali.zip
+
+and provide a way to make simple query
 
 Features
 --------
 
-- Can be bullet points
+- from codice istat to codice catastale/denominazione
+- from codice catastale to codice istat/denominazione
 
 
 Examples
 --------
 
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+utility = component.getUtility(IUnitaTerritorialiUtility)
+comune = utility.codice_catastale_to_comune("D458")
+{'codice_istat': '39010', 'denominazione': 'Faenza'}
+
+comune = utility.codice_istat_to_comune("39010")
+{'codice_catastale': 'D458', 'denominazione': 'Faenza'}
 
 
 Documentation

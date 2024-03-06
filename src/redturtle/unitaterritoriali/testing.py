@@ -19,13 +19,15 @@ class RedturtleUnitaterritorialiLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         import plone.app.dexterity
+
         self.loadZCML(package=plone.app.dexterity)
         import plone.restapi
+
         self.loadZCML(package=plone.restapi)
         self.loadZCML(package=redturtle.unitaterritoriali)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'redturtle.unitaterritoriali:default')
+        applyProfile(portal, "redturtle.unitaterritoriali:default")
 
 
 REDTURTLE_UNITATERRITORIALI_FIXTURE = RedturtleUnitaterritorialiLayer()
@@ -33,13 +35,13 @@ REDTURTLE_UNITATERRITORIALI_FIXTURE = RedturtleUnitaterritorialiLayer()
 
 REDTURTLE_UNITATERRITORIALI_INTEGRATION_TESTING = IntegrationTesting(
     bases=(REDTURTLE_UNITATERRITORIALI_FIXTURE,),
-    name='RedturtleUnitaterritorialiLayer:IntegrationTesting',
+    name="RedturtleUnitaterritorialiLayer:IntegrationTesting",
 )
 
 
 REDTURTLE_UNITATERRITORIALI_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(REDTURTLE_UNITATERRITORIALI_FIXTURE,),
-    name='RedturtleUnitaterritorialiLayer:FunctionalTesting',
+    name="RedturtleUnitaterritorialiLayer:FunctionalTesting",
 )
 
 
@@ -49,5 +51,5 @@ REDTURTLE_UNITATERRITORIALI_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name='RedturtleUnitaterritorialiLayer:AcceptanceTesting',
+    name="RedturtleUnitaterritorialiLayer:AcceptanceTesting",
 )

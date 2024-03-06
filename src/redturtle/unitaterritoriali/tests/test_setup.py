@@ -23,16 +23,17 @@ class TestSetup(unittest.TestCase):
 
     def setUp(self):
         """Custom shared utility setup for tests."""
-        self.portal = self.layer['portal']
+        self.portal = self.layer["portal"]
         if get_installer:
-            self.installer = get_installer(self.portal, self.layer['request'])
+            self.installer = get_installer(self.portal, self.layer["request"])
         else:
-            self.installer = api.portal.get_tool('portal_quickinstaller')
+            self.installer = api.portal.get_tool("portal_quickinstaller")
 
     def test_product_installed(self):
         """Test if redturtle.unitaterritoriali is installed."""
-        self.assertTrue(self.installer.is_product_installed(
-            'redturtle.unitaterritoriali'))
+        self.assertTrue(
+            self.installer.is_product_installed("redturtle.unitaterritoriali")
+        )
 
     def test_browserlayer(self):
         """Test that IRedturtleUnitaterritorialiLayer is registered."""
@@ -40,9 +41,8 @@ class TestSetup(unittest.TestCase):
         from redturtle.unitaterritoriali.interfaces import (
             IRedturtleUnitaterritorialiLayer,
         )
-        self.assertIn(
-            IRedturtleUnitaterritorialiLayer,
-            utils.registered_layers())
+
+        self.assertIn(IRedturtleUnitaterritorialiLayer, utils.registered_layers())
 
 
 class TestUninstall(unittest.TestCase):
@@ -50,20 +50,21 @@ class TestUninstall(unittest.TestCase):
     layer = REDTURTLE_UNITATERRITORIALI_INTEGRATION_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
+        self.portal = self.layer["portal"]
         if get_installer:
-            self.installer = get_installer(self.portal, self.layer['request'])
+            self.installer = get_installer(self.portal, self.layer["request"])
         else:
-            self.installer = api.portal.get_tool('portal_quickinstaller')
+            self.installer = api.portal.get_tool("portal_quickinstaller")
         roles_before = api.user.get_roles(TEST_USER_ID)
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.installer.uninstall_product('redturtle.unitaterritoriali')
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])
+        self.installer.uninstall_product("redturtle.unitaterritoriali")
         setRoles(self.portal, TEST_USER_ID, roles_before)
 
     def test_product_uninstalled(self):
         """Test if redturtle.unitaterritoriali is cleanly uninstalled."""
-        self.assertFalse(self.installer.is_product_installed(
-            'redturtle.unitaterritoriali'))
+        self.assertFalse(
+            self.installer.is_product_installed("redturtle.unitaterritoriali")
+        )
 
     def test_browserlayer_removed(self):
         """Test that IRedturtleUnitaterritorialiLayer is removed."""
@@ -71,4 +72,5 @@ class TestUninstall(unittest.TestCase):
         from redturtle.unitaterritoriali.interfaces import (
             IRedturtleUnitaterritorialiLayer,
         )
+
         self.assertNotIn(IRedturtleUnitaterritorialiLayer, utils.registered_layers())
