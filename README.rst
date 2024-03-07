@@ -55,20 +55,6 @@ comune = utility.codice_istat_to_comune("39010")
 {'codice_catastale': 'D458', 'denominazione': 'Faenza'}
 
 
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
-
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
-
-
 Installation
 ------------
 
@@ -88,30 +74,7 @@ and then running ``bin/buildout``
 Authors
 -------
 
-Provided by awesome people ;)
-
-
-Contributors
-------------
-
-Put your name here, you deserve it!
-
-- ?
-
-
-Contribute
-----------
-
-- Issue Tracker: https://github.com/collective/redturtle.unitaterritoriali/issues
-- Source Code: https://github.com/collective/redturtle.unitaterritoriali
-- Documentation: https://docs.plone.org/foo/bar
-
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+RedTurtle
 
 
 License

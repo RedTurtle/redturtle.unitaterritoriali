@@ -27,7 +27,7 @@ class RedturtleUnitaterritorialiLayer(PloneSandboxLayer):
         self.loadZCML(package=redturtle.unitaterritoriali)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, "redturtle.unitaterritoriali:default")
+        return
 
 
 REDTURTLE_UNITATERRITORIALI_FIXTURE = RedturtleUnitaterritorialiLayer()
