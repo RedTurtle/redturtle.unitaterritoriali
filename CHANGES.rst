@@ -2,10 +2,12 @@ Changelog
 =========
 
 
-1.0a2 (unreleased)
-------------------
+1.0 (unreleased)
+----------------
 
-- Nothing changed yet.
+- Fix README
+  Release 1.0
+  [lucabel]
 
 
 1.0a1 (2024-03-07)

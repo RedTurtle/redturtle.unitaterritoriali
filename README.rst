@@ -32,6 +32,7 @@ redturtle.unitaterritoriali
 ===========================
 
 This addon takes data from ISTAT:
+
 - https://www.istat.it/it/archivio/6789
 - https://www.istat.it/storage/codici-unita-amministrative/Elenco-codici-statistici-e-denominazioni-delle-unita-territoriali.zip
 
@@ -47,12 +48,12 @@ Features
 Examples
 --------
 
-utility = component.getUtility(IUnitaTerritorialiUtility)
-comune = utility.codice_catastale_to_comune("D458")
-{'codice_istat': '39010', 'denominazione': 'Faenza'}
+    utility = component.getUtility(IUnitaTerritorialiUtility)
+    comune = utility.codice_catastale_to_comune("D458")
+    {'codice_istat': '39010', 'denominazione': 'Faenza'}
 
-comune = utility.codice_istat_to_comune("39010")
-{'codice_catastale': 'D458', 'denominazione': 'Faenza'}
+    comune = utility.codice_istat_to_comune("39010")
+    {'codice_catastale': 'D458', 'denominazione': 'Faenza'}
 
 
 Installation
