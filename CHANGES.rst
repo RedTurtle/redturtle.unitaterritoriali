@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0 (unreleased)
+1.0 (2024-03-11)
 ----------------
 
 - Fix README
