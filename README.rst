@@ -48,13 +48,14 @@ Features
 Examples
 --------
 
+This is an example of how to use this package::
+
     utility = component.getUtility(IUnitaTerritorialiUtility)
     comune = utility.codice_catastale_to_comune("D458")
     {'codice_istat': '39010', 'denominazione': 'Faenza'}
 
     comune = utility.codice_istat_to_comune("39010")
     {'codice_catastale': 'D458', 'denominazione': 'Faenza'}
-
 
 Installation
 ------------
