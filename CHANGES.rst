@@ -2,10 +2,11 @@ Changelog
 =========
 
 
-1.1 (unreleased)
-----------------
+1.0.1 (unreleased)
+------------------
 
-- Nothing changed yet.
+- Fix readme and setup metadata
+  [lucabel]
 
 
 1.0 (2024-03-11)
