@@ -2,10 +2,15 @@ Changelog
 =========
 
 
-1.0.2 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- aggiornati i dati con nuuovo CSV da ISTAT
+  [mamico]
+- fix CI / gha
+  [mamico]
+- aggiunte costanti per dizionari precalcolati per PROVINCE e COMUNI
+  [mamico]
 
 
 1.0.1 (2024-03-12)

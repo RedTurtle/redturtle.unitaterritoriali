@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="redturtle.unitaterritoriali",
-    version="1.0.2.dev0",
+    version="1.1.0.dev0",
     description="An add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -53,10 +53,6 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "setuptools",
-        # -*- Extra requirements: -*-
-        "z3c.jbot",
-        "plone.api>=1.8.4",
-        "plone.app.dexterity",
     ],
     extras_require={
         "test": [
@@ -66,13 +62,10 @@ setup(
             # plone_coredev tests as of 2016-04-01.
             "plone.testing>=5.0.0",
             "plone.app.contenttypes",
-            "plone.app.robotframework[debug]",
         ],
     },
     entry_points="""
     [z3c.autoinclude.plugin]
     target = plone
-    [console_scripts]
-    update_locale = redturtle.unitaterritoriali.locales.update:update_locale
     """,
 )
