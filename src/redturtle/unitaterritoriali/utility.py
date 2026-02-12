@@ -1,52 +1,74 @@
+from importlib import resources
 from redturtle.unitaterritoriali.interfaces import IUnitaTerritorialiUtility
 from zope.interface import implementer
-from plone.memoize import forever
+
 import csv
-import os
 import logging
 
 
 logger = logging.getLogger(__name__)
 
 
-file_codici = "codici_statistici_22_01_2024.csv"
+file_codici = "codici_statistici_01_01_2026.csv"
+fd = resources.open_text(__package__, file_codici, encoding="utf-8")
+csv_reader = csv.DictReader(fd, delimiter=";")
+
+# raw data
+DATA = list(csv_reader)
+
+# province
+PROV = sorted(
+    [
+        {"value": k, "title": v}
+        for (k, v) in {
+            row["Sigla automobilistica"]: row[
+                "Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)"
+            ]
+            for row in DATA
+        }.items()
+    ],
+    key=lambda x: x["title"],
+)
+
+# comuni
+COMUNI = sorted(
+    [
+        {"value": k, "title": v}
+        for (k, v) in {
+            row["Codice Comune formato numerico"]: row["Denominazione in italiano"]
+            for row in DATA
+        }.items()
+    ],
+    key=lambda x: x["title"],
+)
+
+ISTAT = {
+    comune["Codice Comune formato numerico"]: {
+        "codice_catastale": comune["Codice Catastale del Comune"],
+        "denominazione": comune["Denominazione in italiano"],
+    }
+    for comune in DATA
+}
+
+CATASTALE = {
+    comune["Codice Catastale del Comune"]: {
+        "codice_istat": comune["Codice Comune formato numerico"],
+        "denominazione": comune["Denominazione in italiano"],
+    }
+    for comune in DATA
+}
 
 
-@forever.memoize
+# BBB
 def load_data_from_csv():
-    """
-    Load data from csv in current folder
-    """
-    current_file_directory = os.path.dirname(os.path.abspath(__file__))
-    filename = "{}/{}".format(current_file_directory, file_codici)
-    fd = open(filename, "r", newline="", encoding="latin-1")
-    csv_reader = csv.DictReader(fd, delimiter=";")
-    return list(csv_reader)
+    return DATA
 
 
 @implementer(IUnitaTerritorialiUtility)
 class UnitaTerritoriali(object):
-
     def __init__(self):
-        self.data = self._get_data()
-
-    def _get_data(self):
-        """This utility load data when instance starting"""
-        comuni = load_data_from_csv()
-        self.codice_istat_to_data = {}
-        self.codice_catastale_to_data = {}
-        for comune in comuni:
-            codice_istat = comune["Codice Comune formato numerico"]
-            codice_catastale = comune["Codice Catastale del comune"]
-            denominazione = comune["Denominazione in italiano"]
-            self.codice_istat_to_data[codice_istat] = {
-                "codice_catastale": codice_catastale,
-                "denominazione": denominazione,
-            }
-            self.codice_catastale_to_data[codice_catastale] = {
-                "codice_istat": codice_istat,
-                "denominazione": denominazione,
-            }
+        self.codice_istat_to_data = ISTAT
+        self.codice_catastale_to_data = CATASTALE
 
     def codice_istat_to_comune(self, codice_istat):
         # it's an int, but here we have only strings

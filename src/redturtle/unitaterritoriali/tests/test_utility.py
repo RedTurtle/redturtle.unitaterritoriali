@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-import unittest
-from zope.component import getUtility
 from redturtle.unitaterritoriali.interfaces import IUnitaTerritorialiUtility
-from redturtle.unitaterritoriali.testing import (
-    REDTURTLE_UNITATERRITORIALI_FUNCTIONAL_TESTING,
-)
+from redturtle.unitaterritoriali.testing import FUNCTIONAL_TESTING
+from redturtle.unitaterritoriali.utility import load_data_from_csv
+from zope.component import getUtility
+
+import unittest
 
 
 class ModelloPraticaIntegrationTest(unittest.TestCase):
-    layer = REDTURTLE_UNITATERRITORIALI_FUNCTIONAL_TESTING
+    layer = FUNCTIONAL_TESTING
 
     def test_utility(self):
         utility = getUtility(IUnitaTerritorialiUtility)
@@ -23,3 +23,19 @@ class ModelloPraticaIntegrationTest(unittest.TestCase):
         res = utility.codice_istat_to_comune(codice_istat)
         self.assertIn("denominazione", res)
         self.assertIn("codice_catastale", res)
+
+    def test_sardegna_2026(self):
+        comuni = load_data_from_csv()
+
+        prov_key = "Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)"
+        self.assertEqual(
+            len([c for c in comuni if c[prov_key] == "Cagliari"]),
+            70,
+        )
+
+        self.assertEqual(
+            len(
+                [c for c in comuni if c[prov_key] == "Medio Campidano"]
+            ),  # ex Sud Sardegna
+            28,
+        )
