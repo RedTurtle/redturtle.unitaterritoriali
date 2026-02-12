@@ -10,11 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 file_codici = "codici_statistici_01_01_2026.csv"
-fd = resources.open_text(__package__, file_codici, encoding="utf-8")
-csv_reader = csv.DictReader(fd, delimiter=";")
-
-# raw data
-DATA = list(csv_reader)
+with resources.open_text(__package__, file_codici, encoding="utf-8") as fd:
+    DATA = list(csv.DictReader(fd, delimiter=";"))
 
 # province
 PROV = sorted(

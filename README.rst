@@ -2,15 +2,8 @@
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on PyPI or github. It is a comment.
 
-.. image:: https://github.com/collective/redturtle.unitaterritoriali/actions/workflows/plone-package.yml/badge.svg
-    :target: https://github.com/collective/redturtle.unitaterritoriali/actions/workflows/plone-package.yml
-
-.. image:: https://coveralls.io/repos/github/collective/redturtle.unitaterritoriali/badge.svg?branch=main
-    :target: https://coveralls.io/github/collective/redturtle.unitaterritoriali?branch=main
-    :alt: Coveralls
-
-.. image:: https://codecov.io/gh/collective/redturtle.unitaterritoriali/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/collective/redturtle.unitaterritoriali
+.. image:: https://github.com/RedTurtle/redturtle.unitaterritoriali/actions/workflows/plone-package.yml/badge.svg
+    :target: https://github.com/RedTurtle/redturtle.unitaterritoriali/actions/workflows/plone-package.yml
 
 .. image:: https://img.shields.io/pypi/v/redturtle.unitaterritoriali.svg
     :target: https://pypi.python.org/pypi/redturtle.unitaterritoriali/
@@ -20,7 +13,9 @@
     :target: https://pypi.python.org/pypi/redturtle.unitaterritoriali
     :alt: Egg Status
 
-.. image:: https://img.shields.io/pypi/pyversions/redturtle.unitaterritoriali.svg?style=plastic   :alt: Supported - Python Versions
+.. image:: https://img.shields.io/pypi/pyversions/redturtle.unitaterritoriali.svg?style=plastic
+    :target: https://pypi.python.org/pypi/redturtle.unitaterritoriali
+    :alt: Supported - Python Versions
 
 .. image:: https://img.shields.io/pypi/l/redturtle.unitaterritoriali.svg
     :target: https://pypi.python.org/pypi/redturtle.unitaterritoriali/
