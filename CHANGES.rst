@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.0 (unreleased)
+1.1.0 (2026-02-13)
 ------------------
 
 - aggiornati i dati con nuuovo CSV da ISTAT
